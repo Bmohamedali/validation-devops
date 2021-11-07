@@ -29,7 +29,7 @@ pipeline{
 									  -Dpackaging=jar \
 									  -DrepositoryId=deploymentRepo \
 									  -Durl=http://localhost:1235/repository/maven-releases/ \
-									  -Dfile=target/nhl-1.0.jar 
+									  -Dfile=Nhl-0.0.1-SNAPSHOT.jar
 				}
 		}
 	}
