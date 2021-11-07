@@ -31,4 +31,6 @@ pipeline{
 									  -Durl=http://localhost:1235/repository/maven-releases/ \
 									  -Dfile=target/nhl-1.0.jar 
 				}
+		}
+	}
 }
