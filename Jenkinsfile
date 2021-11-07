@@ -1,12 +1,6 @@
 pipeline{
 	agent any
 	stages{
-		stage('GIT'){
-			steps{
-				echo "Getting Project from Git"
-				git "https://github.com/Bmohamedali/validation-devops.git"
-			}
-		}
 		stage('Test'){
 			steps{
 				sh "ls"
