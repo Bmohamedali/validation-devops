@@ -7,10 +7,19 @@ pipeline{
 				sh "mvn clean"
 			}
 		}
-		/*stage('MVN TEST'){
+		stage('MVN TEST'){
 			steps{
 				echo "MAVEN Test JUnit"
 				sh "mvn test"
+			}
+		}
+		stage('SONARQUBE'){
+			steps{
+				echo "SONARQUBE Analysis"
+				sh "mvn clean verify sonar:sonar \
+  					-Dsonar.projectKey=projet-devops \
+  					-Dsonar.host.url=http://localhost:9000 \
+  					-Dsonar.login=eb1bf5133193488f0420893864ba45a4c994220a"
 			}
 		}
 		stage('Package'){
@@ -26,7 +35,7 @@ pipeline{
 									  -Durl=http://localhost:1235/repository/maven-releases/ \
 									  -Dfile=Nhl-0.0.1-SNAPSHOT.jar"
 				}
-		}*/
+		}
 		stage('Docker Build'){
 			steps{
 				script{
@@ -38,6 +47,7 @@ pipeline{
 		stage('Docker PUSH'){
 			steps{
 				script{
+					echo "Push docker image"
 					docker.withRegistry('', registryCredential){
 				 		dockerImage.push("my-app:latest")
 						}
