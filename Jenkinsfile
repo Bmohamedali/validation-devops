@@ -29,14 +29,18 @@ pipeline{
 		}*/
 		stage('Docker Build'){
 			steps{
-				dockerImage = docker.build("my-app:latest")
+				script{
+					dockerImage = docker.build("my-app:latest")
+					}
 				}
 		}
 		stage('Docker PUSH'){
 			steps{
-				docker.withRegistry('', registryCredential){
-				 dockerImage.push("my-app:latest")
-				}
+				script{
+					docker.withRegistry('', registryCredential){
+				 		dockerImage.push("my-app:latest")
+						}
+					}
 				}
 		}
 	}
