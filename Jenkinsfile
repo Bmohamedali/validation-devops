@@ -30,6 +30,7 @@ pipeline{
 		stage('Docker Build'){
 			steps{
 				script{
+					echo "Build docker image"
 					dockerImage = docker.build("my-app:latest")
 					}
 				}
